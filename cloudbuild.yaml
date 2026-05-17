@@ -59,6 +59,7 @@ availableSecrets:
 
 substitutions:
   _GITHUB_REPO: zmcgill7/Solitaire
+  _RELEASE_TAG: ""
 
 options:
   logging: CLOUD_LOGGING_ONLY

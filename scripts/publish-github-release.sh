@@ -4,14 +4,14 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DIST_DIR="$ROOT_DIR/dist"
 REPO="${_GITHUB_REPO:-zmcgill7/Solitaire}"
-TAG="${TAG_NAME:-}"
+TAG="${TAG_NAME:-${_RELEASE_TAG:-}}"
 
 if [[ -z "$TAG" ]]; then
   TAG="$(git -C "$ROOT_DIR" describe --tags --exact-match 2>/dev/null || true)"
 fi
 
 if [[ -z "$TAG" ]]; then
-  echo "No release tag found. Run this from a tag-triggered Cloud Build or set TAG_NAME." >&2
+  echo "No release tag found. Run this from a tag-triggered Cloud Build or set _RELEASE_TAG for a manual run." >&2
   exit 1
 fi
 
