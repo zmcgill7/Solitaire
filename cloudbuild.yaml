@@ -42,6 +42,9 @@ steps:
   - name: gcr.io/cloud-builders/gcloud
     id: publish-github-release
     entrypoint: bash
+    env:
+      - TAG_NAME=$TAG_NAME
+      - _GITHUB_REPO=$_GITHUB_REPO
     secretEnv:
       - GITHUB_TOKEN
     args:
@@ -59,7 +62,6 @@ availableSecrets:
 
 substitutions:
   _GITHUB_REPO: zmcgill7/Solitaire
-  _RELEASE_TAG: ""
 
 options:
   logging: CLOUD_LOGGING_ONLY
