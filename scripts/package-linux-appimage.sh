@@ -56,6 +56,18 @@ export PATH="$TOOLS_DIR:$PATH"
   --executable "$APPDIR/usr/bin/$EXECUTABLE_NAME" \
   --plugin qt
 
+QT_QML_DIR="/opt/Qt/6.7.3/gcc_64/qml"
+if [[ -d "$QT_QML_DIR" ]]; then
+  mkdir -p "$APPDIR/usr/qml"
+  cp -a "$QT_QML_DIR/QtQml" "$APPDIR/usr/qml/"
+  cp -a "$QT_QML_DIR/QtQuick" "$APPDIR/usr/qml/"
+
+  QT_LIB_DIR="/opt/Qt/6.7.3/gcc_64/lib"
+  find "$QT_LIB_DIR" -maxdepth 1 \
+    \( -name "libQt6Qml*.so*" -o -name "libQt6Quick*.so*" -o -name "libQt6Labs*.so*" \) \
+    -exec cp -a -n {} "$APPDIR/usr/lib/" \;
+fi
+
 "$APPIMAGETOOL" "$APPDIR" "$OUTPUT"
 chmod +x "$OUTPUT"
 echo "Created $OUTPUT"
