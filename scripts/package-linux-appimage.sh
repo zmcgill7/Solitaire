@@ -45,6 +45,7 @@ download_tool "https://github.com/AppImage/AppImageKit/releases/download/continu
 export OUTPUT="$DIST_DIR/${APP_NAME}-Linux-x86_64.AppImage"
 export LINUXDEPLOY_PLUGIN_QT_QML_SOURCES_PATHS="$ROOT_DIR/solitaire"
 export APPIMAGE_EXTRACT_AND_RUN=1
+export LD_LIBRARY_PATH="/opt/Qt/6.7.3/gcc_64/lib:${LD_LIBRARY_PATH:-}"
 ln -sf "$(basename "$LINUXDEPLOY_QT")" "$TOOLS_DIR/linuxdeploy-plugin-qt"
 export PATH="$TOOLS_DIR:$PATH"
 
