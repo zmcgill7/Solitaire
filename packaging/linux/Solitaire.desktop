@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Solitaire
+Comment=Klondike Solitaire built with Qt Quick
+Exec=appqml-solitaire
+Icon=solitaire
+Categories=Game;CardGame;
+Terminal=false

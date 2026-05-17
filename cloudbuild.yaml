@@ -1,0 +1,51 @@
+steps:
+  - name: ubuntu:22.04
+    id: package-linux-appimage
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        apt-get update
+        DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+          ca-certificates \
+          cmake \
+          file \
+          g++ \
+          git \
+          libgl1-mesa-dev \
+          libfuse2 \
+          libxkbcommon-dev \
+          make \
+          python3 \
+          python3-pip \
+          wget
+        python3 -m pip install --no-cache-dir aqtinstall
+        python3 -m aqt install-qt linux desktop 6.7.3 gcc_64 -O /opt/Qt
+        export CMAKE_PREFIX_PATH=/opt/Qt/6.7.3/gcc_64
+        export PATH=/opt/Qt/6.7.3/gcc_64/bin:$PATH
+        ./scripts/package-linux-appimage.sh
+
+  - name: gcr.io/cloud-builders/gcloud
+    id: publish-github-release
+    entrypoint: bash
+    secretEnv:
+      - GITHUB_TOKEN
+    args:
+      - -c
+      - |
+        set -euo pipefail
+        apt-get update
+        DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates curl jq
+        ./scripts/publish-github-release.sh
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/$PROJECT_ID/secrets/github-release-token/versions/latest
+      env: GITHUB_TOKEN
+
+substitutions:
+  _GITHUB_REPO: zmcgill7/Solitaire
+
+options:
+  logging: CLOUD_LOGGING_ONLY
