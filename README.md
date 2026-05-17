@@ -4,20 +4,30 @@ A desktop Klondike Solitaire game built with Qt 6, C++, and QML. The game uses a
 
 ## Download
 
-Get the latest builds from the [Releases page](https://github.com/zmcgill7/Solitaire/releases/latest).
+Choose the build for your operating system:
 
 ### Windows
 
-Download `Solitaire-Windows-x64-Setup.exe`, run the installer, then launch Solitaire from the Start menu or desktop shortcut.
+[Download Solitaire for Windows](https://github.com/zmcgill7/Solitaire/releases/latest/download/Solitaire-Windows-x64-Setup.exe)
+
+Run the installer, then launch Solitaire from the Start menu or desktop shortcut. Linux release builds are handled through CI/CD, but Windows builds are packaged manually to avoid the added cost and tooling required for a Windows build VM. The installer is built separately with Inno Setup.
+
+### macOS
+
+macOS builds are not currently published for the same reason Windows builds are not automated, and because I do not currently have a macOS device available for packaging and testing. You can still build from source on macOS with Qt 6.5+ and a compatible toolchain.
 
 ### Linux
 
-Download `Solitaire-Linux-x86_64.AppImage`, mark it executable, and run it:
+[Download Solitaire for Linux](https://github.com/zmcgill7/Solitaire/releases/latest/download/Solitaire-Linux-x86_64.AppImage)
+
+Mark the AppImage executable, then run it:
 
 ```bash
 chmod +x Solitaire-Linux-x86_64.AppImage
 ./Solitaire-Linux-x86_64.AppImage
 ```
+
+Older builds and release notes are available on the [Releases page](https://github.com/zmcgill7/Solitaire/releases).
 
 ## Features
 
@@ -29,7 +39,7 @@ chmod +x Solitaire-Linux-x86_64.AppImage
 - SVG playing card artwork
 - Windows installer and Linux AppImage release builds
 
-## Screens
+## Interface
 
 The game opens directly to the card table and is designed for desktop play. The Qt Quick layout adapts the table and controls to the available window size.
 

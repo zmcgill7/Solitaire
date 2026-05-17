@@ -1,4 +1,4 @@
-﻿steps:
+steps:
   - name: ubuntu:22.04
     id: package-linux-appimage
     entrypoint: bash
@@ -21,9 +21,9 @@
           python3-pip \
           wget
         python3 -m pip install --no-cache-dir aqtinstall
-        python3 -m aqt install-qt linux desktop 6.7.3 gcc_64 -O /opt/Qt
-        export CMAKE_PREFIX_PATH=/opt/Qt/6.7.3/gcc_64
-        export PATH=/opt/Qt/6.7.3/gcc_64/bin:$$PATH
+        python3 -m aqt install-qt linux desktop 6.7.3 linux_gcc_64 -O /opt/Qt --archives icu qtbase qtdeclarative qtsvg qttools qttranslations qtwayland
+        export CMAKE_PREFIX_PATH=/opt/Qt/6.7.3/linux_gcc_64
+        export PATH=/opt/Qt/6.7.3/linux_gcc_64/bin:$$PATH
         ./scripts/package-linux-appimage.sh
 
   - name: gcr.io/cloud-builders/gcloud
@@ -49,4 +49,5 @@ substitutions:
 
 options:
   logging: CLOUD_LOGGING_ONLY
+
 
