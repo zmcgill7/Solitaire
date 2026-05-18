@@ -12,6 +12,8 @@ Choose the build for your operating system:
 
 Run the installer, then launch Solitaire from the Start menu or desktop shortcut. Linux release builds are handled through CI/CD, but Windows builds are packaged manually to avoid the added cost and tooling required for a Windows build VM. The installer is built separately with Inno Setup.
 
+<img width="1919" height="1033" alt="image" src="https://github.com/user-attachments/assets/947f8c09-0081-4a78-8623-64f65ad15351" />
+
 ### macOS
 
 macOS builds are not currently published for the same reason Windows builds are not automated, and because I do not currently have a macOS device available for packaging and testing. You can still build from source on macOS with Qt 6.5+ and a compatible toolchain.
@@ -29,6 +31,9 @@ chmod +x Solitaire-Linux-x86_64.AppImage
 
 Older builds and release notes are available on the [Releases page](https://github.com/zmcgill7/Solitaire/releases).
 
+<img width="1280" height="900" alt="image" src="https://github.com/user-attachments/assets/c2b108fb-33da-475b-9bdc-cc4096b04b41" />
+
+
 ## Features
 
 - Classic Klondike layout with stock, waste, foundation, and seven tableau piles
@@ -42,6 +47,9 @@ Older builds and release notes are available on the [Releases page](https://gith
 ## Interface
 
 The game opens directly to the card table and is designed for desktop play. The Qt Quick layout adapts the table and controls to the available window size.
+
+<img width="552" height="482" alt="image" src="https://github.com/user-attachments/assets/1aa8ccd6-2550-486d-b62b-2b350f3d2630" />
+
 
 ## Tech Stack
 
